@@ -1,0 +1,39 @@
+{
+  "name": "enhanced-pdf-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --inspect --trace-warnings ./app.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.864.0",
+    "@aws-sdk/client-s3": "^3.864.0",
+    "@aws-sdk/client-secrets-manager": "^3.864.0",
+    "aigle": "^1.14.1",
+    "body-parser": "^2.2.0",
+    "canvas": "^3.2.0",
+    "compression": "^1.8.1",
+    "config": "^4.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-bearer-token": "^3.0.0",
+    "ioredis": "^5.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "moment-timezone": "^0.6.0",
+    "mongoose": "^8.17.2",
+    "multer": "^2.0.2",
+    "pdf-poppler": "^0.2.1",
+    "request-ip": "^3.3.0",
+    "response-format": "^1.2.0",
+    "sequelize": "^6.37.7",
+    "sharp": "^0.34.3",
+    "uuid": "^11.1.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  }
+}
