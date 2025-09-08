@@ -568,7 +568,7 @@ class EnhancedPDFParserWithImages {
             createComprehensiveAnalysisPrompt,
             validateClaudeResponse,
             postProcessClaudeResponse
-        } = require('./claude-prompts'); // 위에서 만든 프롬프트 모듈
+        } = require('./claude_prompts'); // 위에서 만든 프롬프트 모듈
 
         const analysisPrompt = createComprehensiveAnalysisPrompt(documentType);
 
