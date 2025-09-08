@@ -52,7 +52,7 @@ module.exports = (mongoose) => {
             type: Object,
         },
         searchableText: {
-            typeL: String,
+            type: String,
         },
         createdAt: {
             type: Date,
