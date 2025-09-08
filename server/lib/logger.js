@@ -30,7 +30,7 @@ const logger = winston.createLogger({
         winston.format.splat()
         // json()과 prettyPrint() 제거
     ),
-    defaultMeta: { service: 'vs-score-api-user', environment: process.env.NODE_ENV || 'development' },
+    defaultMeta: { service: 'enhanced-pdf-parser', environment: process.env.NODE_ENV || 'development' },
     transports: [
         // 콘솔 출력 - colorize를 먼저, printf를 나중에
         new winston.transports.Console({

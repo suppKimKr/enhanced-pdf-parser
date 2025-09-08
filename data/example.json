@@ -1,0 +1,2877 @@
+{
+  "statusCode": 200,
+  "error": false,
+  "data": {
+    "processingId": "6f9cb084-c85f-4224-8aeb-4f451f274da4",
+    "documentType": "korean",
+    "metadata": {
+      "documentType": "korean",
+      "year": "2025",
+      "examType": "제1학기 기말고사",
+      "subject": "화학1",
+      "period": 3,
+      "institution": "학교",
+      "totalPages": 6,
+      "hasImages": true,
+      "imageCount": 20,
+      "questionRange": "1-24",
+      "processingDate": "2025-09-08T10:05:57.280Z",
+      "totalImageCount": 20,
+      "s3Bucket": "vs-score-image",
+      "claudeModelUsed": "arn:aws:bedrock:ap-northeast-2:137197023182:inference-profile/apac.anthropic.claude-sonnet-4-20250514-v1:0"
+    },
+    "questions": [
+      {
+        "questionNumber": 1,
+        "questionText": "그림은 구리, 다이아몬드, 드라이아이스, 염화 나트륨의 결정 구조를 나타낸 것이다. A~D 결정을 기준에 따라 분류한 것으로 가장 적절한 것은?",
+        "passage": "4가지 물질의 결정 구조 분류 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "B, C, D, A"
+          },
+          {
+            "number": "②",
+            "text": "C, A, B, D"
+          },
+          {
+            "number": "③",
+            "text": "C, B, D, A"
+          },
+          {
+            "number": "④",
+            "text": "C, B, D, A"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q1_crystal_001",
+            "type": "diagram",
+            "description": "4가지 결정 구조 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 150
+            }
+          },
+          {
+            "imageId": "img_q1_table_001",
+            "type": "table",
+            "description": "결정 분류표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 350,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "classification",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 2,
+        "images": [
+          {
+            "imageId": "img_q1_crystal_001",
+            "type": "diagram",
+            "description": "4가지 결정 구조 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 150
+            },
+            "questionNumber": 1,
+            "url": "https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/diagram_img_q1_crystal_001_1757325956971.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/diagram_img_q1_crystal_001_1757325956971.png",
+            "dimensions": {
+              "width": 200,
+              "height": 150,
+              "originalWidth": 200,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 48069,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          },
+          {
+            "imageId": "img_q1_table_001",
+            "type": "table",
+            "description": "결정 분류표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 350,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 1,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/table_img_q1_table_001_1757325956979.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/table_img_q1_table_001_1757325956979.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 1,
+              "x": 70,
+              "y": 350,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 33371,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram",
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 2,
+          "imagesByType": {
+            "diagram": 1,
+            "table": 1
+          },
+          "totalImageSize": 50000
+        }
+      },
+      {
+        "questionNumber": 2,
+        "questionText": "표는 원소 A~D의 바닥 상태 전자 배치를 나타낸 것이다.",
+        "passage": "원소의 전자 배치와 관련된 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄱ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q2_table_001",
+            "type": "table",
+            "description": "원소별 전자 배치표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 120,
+              "width": 250,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "electron_configuration",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q2_table_001",
+            "type": "table",
+            "description": "원소별 전자 배치표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 120,
+              "width": 250,
+              "height": 100
+            },
+            "questionNumber": 2,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q2/table_img_q2_table_001_1757325956986.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q2/table_img_q2_table_001_1757325956986.png",
+            "dimensions": {
+              "width": 250,
+              "height": 100,
+              "originalWidth": 250,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 120,
+              "width": 250,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 30962,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 25000
+        }
+      },
+      {
+        "questionNumber": 3,
+        "questionText": "그림의 빈칸 중 빈칸은 주기율표에서 원소 A~D가 위치하는 부족을 나타낸 것이다.",
+        "passage": "주기율표에서 원소의 위치와 관련된 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄱ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q3_table_001",
+            "type": "table",
+            "description": "주기율표 일부",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            }
+          }
+        ],
+        "questionType": "periodic_table",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q3_table_001",
+            "type": "table",
+            "description": "주기율표 일부",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            },
+            "questionNumber": 3,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q3/table_img_q3_table_001_1757325956997.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q3/table_img_q3_table_001_1757325956997.png",
+            "dimensions": {
+              "width": 250,
+              "height": 150,
+              "originalWidth": 250,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 1,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 51293,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 37500
+        }
+      },
+      {
+        "questionNumber": 4,
+        "questionText": "표는 임의의 2주기 원소 X~Z로 구성된 (가), (나) 화학식 분자의 특성이다.",
+        "passage": "2주기 원소로 구성된 분자의 특성 비교",
+        "choices": [
+          {
+            "number": "①",
+            "text": "(나)의 쌍극자 모멘트가 크다"
+          },
+          {
+            "number": "②",
+            "text": "(나)의 전자쌍의 수가 (가)보다 2개 많다"
+          },
+          {
+            "number": "③",
+            "text": "공유 전자쌍 수는 (가)가 (나)보다 많다"
+          },
+          {
+            "number": "④",
+            "text": "전기 음성도는 Z < X < Y 순이다"
+          },
+          {
+            "number": "⑤",
+            "text": "2Y의 분자 모양은 직선형이다"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q4_table_001",
+            "type": "table",
+            "description": "분자 특성 비교표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 80
+            }
+          }
+        ],
+        "questionType": "molecular_structure",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q4_table_001",
+            "type": "table",
+            "description": "분자 특성 비교표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 80
+            },
+            "questionNumber": 4,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q4/table_img_q4_table_001_1757325957002.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q4/table_img_q4_table_001_1757325957002.png",
+            "dimensions": {
+              "width": 200,
+              "height": 80,
+              "originalWidth": 200,
+              "originalHeight": 80
+            },
+            "originalCoordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 80
+            },
+            "contentAnalysis": {},
+            "fileSize": 24832,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 16000
+        }
+      },
+      {
+        "questionNumber": 5,
+        "questionText": "그림은 분자 (가)~(다)의 루이스 구조식을 나타낸 것이다.",
+        "passage": "분자의 루이스 구조식과 관련된 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "결합각은 (나)이다"
+          },
+          {
+            "number": "②",
+            "text": "극성 분자는 2가지이다"
+          },
+          {
+            "number": "③",
+            "text": "평면 구조인 분자는 1가지이다"
+          },
+          {
+            "number": "④",
+            "text": "(가)의 분자 모양은 삼각뿔형이다"
+          },
+          {
+            "number": "⑤",
+            "text": "비공유 전자쌍 수는 (다)가 가장 작다"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q5_diagram_001",
+            "type": "diagram",
+            "description": "루이스 구조식 3개",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 250,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "lewis_structure",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q5_diagram_001",
+            "type": "diagram",
+            "description": "루이스 구조식 3개",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 250,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 5,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q5/diagram_img_q5_diagram_001_1757325957009.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q5/diagram_img_q5_diagram_001_1757325957009.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 250,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 27642,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 6,
+        "questionText": "그림은 1, 2주기 원소 W~Z로 구성된 분자 (가)와 (나)의 결합각을 나타낸 것이다.",
+        "passage": "분자의 결합각 비교 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "W",
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q6_diagram_001",
+            "type": "diagram",
+            "description": "분자 결합각 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 450,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "bond_angle",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q6_diagram_001",
+            "type": "diagram",
+            "description": "분자 결합각 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 450,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 6,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q6/diagram_img_q6_diagram_001_1757325957013.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q6/diagram_img_q6_diagram_001_1757325957013.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 2,
+              "x": 70,
+              "y": 450,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 30538,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 7,
+        "questionText": "다음은 2주기 1, 2족기 원소 X~Z로 이루어진 분자 (가)와 (나)에 대한 자료이다.",
+        "passage": "분자의 구조와 성질에 관한 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q7_diagram_001",
+            "type": "diagram",
+            "description": "분자 구조 비교",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 180,
+              "width": 250,
+              "height": 120
+            }
+          }
+        ],
+        "questionType": "molecular_properties",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q7_diagram_001",
+            "type": "diagram",
+            "description": "분자 구조 비교",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 180,
+              "width": 250,
+              "height": 120
+            },
+            "questionNumber": 7,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q7/diagram_img_q7_diagram_001_1757325957020.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q7/diagram_img_q7_diagram_001_1757325957020.png",
+            "dimensions": {
+              "width": 250,
+              "height": 120,
+              "originalWidth": 250,
+              "originalHeight": 120
+            },
+            "originalCoordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 180,
+              "width": 250,
+              "height": 120
+            },
+            "contentAnalysis": {},
+            "fileSize": 47067,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 30000
+        }
+      },
+      {
+        "questionNumber": 8,
+        "questionText": "다음은 2주기 1족과 4 이온의 분자 (가)와 (나)에 대한 자료이다.",
+        "passage": "이온 분자의 성질 비교",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "X",
+            "Y"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q8_diagram_001",
+            "type": "diagram",
+            "description": "이온 분자 구조",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 380,
+              "width": 250,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "ionic_molecules",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q8_diagram_001",
+            "type": "diagram",
+            "description": "이온 분자 구조",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 380,
+              "width": 250,
+              "height": 100
+            },
+            "questionNumber": 8,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q8/diagram_img_q8_diagram_001_1757325957027.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q8/diagram_img_q8_diagram_001_1757325957027.png",
+            "dimensions": {
+              "width": 250,
+              "height": 100,
+              "originalWidth": 250,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 2,
+              "x": 315,
+              "y": 380,
+              "width": 250,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 36251,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 25000
+        }
+      },
+      {
+        "questionNumber": 9,
+        "questionText": "표는 2주기 원소 X~Z를 이루어진 분자 (가)~(다)에 대한 자료이다.",
+        "passage": "분자의 원자 수와 전자 수 비교",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "X",
+            "Y",
+            "Z"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q9_table_001",
+            "type": "table",
+            "description": "분자별 원자수와 전자수",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "molecular_composition",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q9_table_001",
+            "type": "table",
+            "description": "분자별 원자수와 전자수",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 9,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q9/table_img_q9_table_001_1757325957031.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q9/table_img_q9_table_001_1757325957031.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 28659,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 10,
+        "questionText": "다음은 25℃, 1기압에서 액체인 물질 X, Y에 대한 자료이다.",
+        "passage": "액체 물질의 증기압과 관련된 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "X",
+            "Y"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q10_table_001",
+            "type": "table",
+            "description": "액체 물질 특성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            }
+          }
+        ],
+        "questionType": "vapor_pressure",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q10_table_001",
+            "type": "table",
+            "description": "액체 물질 특성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            },
+            "questionNumber": 10,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q10/table_img_q10_table_001_1757325957037.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q10/table_img_q10_table_001_1757325957037.png",
+            "dimensions": {
+              "width": 200,
+              "height": 150,
+              "originalWidth": 200,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 3,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 45456,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 30000
+        }
+      },
+      {
+        "questionNumber": 11,
+        "questionText": "다음은 미지의 AB, AC, C에 대한 자료이다.",
+        "passage": "화합물의 성질 비교 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q11_table_001",
+            "type": "table",
+            "description": "화합물 특성 비교표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "compound_properties",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q11_table_001",
+            "type": "table",
+            "description": "화합물 특성 비교표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 100
+            },
+            "questionNumber": 11,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q11/table_img_q11_table_001_1757325957044.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q11/table_img_q11_table_001_1757325957044.png",
+            "dimensions": {
+              "width": 250,
+              "height": 100,
+              "originalWidth": 250,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 36962,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 25000
+        }
+      },
+      {
+        "questionNumber": 12,
+        "questionText": "그림은 6가지 물질을 주어진 기준에 따라 분류한 것이다.",
+        "passage": "물질의 분류 기준에 관한 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q12_diagram_001",
+            "type": "diagram",
+            "description": "물질 분류 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            }
+          }
+        ],
+        "questionType": "classification",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q12_diagram_001",
+            "type": "diagram",
+            "description": "물질 분류 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            },
+            "questionNumber": 12,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q12/diagram_img_q12_diagram_001_1757325957052.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q12/diagram_img_q12_diagram_001_1757325957052.png",
+            "dimensions": {
+              "width": 250,
+              "height": 150,
+              "originalWidth": 250,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 3,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 39330,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 37500
+        }
+      },
+      {
+        "questionNumber": 13,
+        "questionText": "일정한 온도에서 밀폐 용기에 일정량의 물을 넣으면 그림과 같이 증발이 일어난다.",
+        "passage": "증발과 응축의 평형에 관한 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄷ"
+          },
+          {
+            "number": "④",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q13_diagram_001",
+            "type": "diagram",
+            "description": "증발 과정 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "phase_equilibrium",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q13_diagram_001",
+            "type": "diagram",
+            "description": "증발 과정 도식",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 13,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q13/diagram_img_q13_diagram_001_1757325957057.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q13/diagram_img_q13_diagram_001_1757325957057.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 29047,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 14,
+        "questionText": "다음은 25℃에서 물에 대한 바닥에 충분한 양의 설탕을 넣고, 시간에 따른 미량 속 고체 설탕의 양을 관찰한 실험이다.",
+        "passage": "설탕의 용해도와 관련된 실험",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄷ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q14_table_001",
+            "type": "table",
+            "description": "시간에 따른 설탕 양 변화",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "solubility",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q14_table_001",
+            "type": "table",
+            "description": "시간에 따른 설탕 양 변화",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 14,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q14/table_img_q14_table_001_1757325957061.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q14/table_img_q14_table_001_1757325957061.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 4,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 30544,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 15,
+        "questionText": "표와 같이 (가)와 (나) 비커에 물이 있다.",
+        "passage": "용액의 pH와 관련된 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "2"
+          },
+          {
+            "number": "②",
+            "text": "2.5"
+          },
+          {
+            "number": "③",
+            "text": "2.5"
+          },
+          {
+            "number": "④",
+            "text": "4"
+          },
+          {
+            "number": "⑤",
+            "text": "6.5"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [],
+        "questionType": "ph_calculation",
+        "difficulty": "standard",
+        "hasImages": false,
+        "imageCount": 0,
+        "images": [],
+        "imageTypes": [],
+        "hasEssentialImages": false,
+        "imageStatistics": {
+          "totalImages": 0,
+          "imagesByType": {},
+          "totalImageSize": 0
+        }
+      },
+      {
+        "questionNumber": 16,
+        "questionText": "그림과 같이 비커에 25℃ 수용액 (가)와 (나)가 들어 있다.",
+        "passage": "수용액의 pH 비교 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄱ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q16_diagram_001",
+            "type": "diagram",
+            "description": "비커 속 용액",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "ph_comparison",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q16_diagram_001",
+            "type": "diagram",
+            "description": "비커 속 용액",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 4,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 100
+            },
+            "questionNumber": 16,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q16/diagram_img_q16_diagram_001_1757325957067.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q16/diagram_img_q16_diagram_001_1757325957067.png",
+            "dimensions": {
+              "width": 250,
+              "height": 100,
+              "originalWidth": 250,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 4,
+              "x": 315,
+              "y": 280,
+              "width": 250,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 38112,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "diagram"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "diagram": 1
+          },
+          "totalImageSize": 25000
+        }
+      },
+      {
+        "questionNumber": 17,
+        "questionText": "다음은 묽은 황산을 수산화 나트륨 수용액으로 중화 적정한 실험이다.",
+        "passage": "중화 적정 실험 문제",
+        "choices": [
+          {
+            "number": "①",
+            "text": "0.05 M"
+          },
+          {
+            "number": "②",
+            "text": "0.1 M"
+          },
+          {
+            "number": "③",
+            "text": "0.3 M"
+          },
+          {
+            "number": "④",
+            "text": "0.6 M"
+          },
+          {
+            "number": "⑤",
+            "text": "1.2 M"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [],
+        "questionType": "neutralization",
+        "difficulty": "standard",
+        "hasImages": false,
+        "imageCount": 0,
+        "images": [],
+        "imageTypes": [],
+        "hasEssentialImages": false,
+        "imageStatistics": {
+          "totalImages": 0,
+          "imagesByType": {},
+          "totalImageSize": 0
+        }
+      },
+      {
+        "questionNumber": 18,
+        "questionText": "표는 25℃ 수용액 (가)~(다)에 대한 자료이다.",
+        "passage": "수용액의 pH와 이온 농도 관계",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q18_table_001",
+            "type": "table",
+            "description": "수용액 특성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "ion_concentration",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q18_table_001",
+            "type": "table",
+            "description": "수용액 특성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 18,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q18/table_img_q18_table_001_1757325957071.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q18/table_img_q18_table_001_1757325957071.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 80,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 29258,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 19,
+        "questionText": "그림은 HCl(aq) 20 mL에 NaOH(aq)을 첨가할 때, 첨가한 NaOH(aq)의 부피에 따른 이온 A~D의 수를 나타낸 것이다.",
+        "passage": "중화 반응에서 이온 수 변화",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄴ"
+          },
+          {
+            "number": "②",
+            "text": "ㄷ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄱ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q19_graph_001",
+            "type": "graph",
+            "description": "이온 수 변화 그래프",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            }
+          }
+        ],
+        "questionType": "neutralization_graph",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q19_graph_001",
+            "type": "graph",
+            "description": "이온 수 변화 그래프",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            },
+            "questionNumber": 19,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q19/graph_img_q19_graph_001_1757325957078.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q19/graph_img_q19_graph_001_1757325957078.png",
+            "dimensions": {
+              "width": 200,
+              "height": 150,
+              "originalWidth": 200,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 5,
+              "x": 70,
+              "y": 280,
+              "width": 200,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 44240,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "graph"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "graph": 1
+          },
+          "totalImageSize": 30000
+        }
+      },
+      {
+        "questionNumber": 20,
+        "questionText": "다음은 4M HA(aq) 2M H₃PO₄ 6M NaOH(aq)의 부피를 달리하여 혼합한 수용액 (가)~(다)에 대한 자료이다.",
+        "passage": "산염기 혼합 용액의 성질",
+        "choices": [
+          {
+            "number": "①",
+            "text": "5/9"
+          },
+          {
+            "number": "②",
+            "text": "15/7"
+          },
+          {
+            "number": "③",
+            "text": "3/20"
+          },
+          {
+            "number": "④",
+            "text": "25/3"
+          },
+          {
+            "number": "⑤",
+            "text": "25/27"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q20_table_001",
+            "type": "table",
+            "description": "혼합 용액 조성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 150
+            }
+          }
+        ],
+        "questionType": "mixed_solution",
+        "difficulty": "hard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q20_table_001",
+            "type": "table",
+            "description": "혼합 용액 조성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 5,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 150
+            },
+            "questionNumber": 20,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q20/table_img_q20_table_001_1757325957087.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q20/table_img_q20_table_001_1757325957087.png",
+            "dimensions": {
+              "width": 250,
+              "height": 150,
+              "originalWidth": 250,
+              "originalHeight": 150
+            },
+            "originalCoordinates": {
+              "pageNumber": 5,
+              "x": 315,
+              "y": 80,
+              "width": 250,
+              "height": 150
+            },
+            "contentAnalysis": {},
+            "fileSize": 61536,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 37500
+        }
+      },
+      {
+        "questionNumber": 21,
+        "questionText": "다음은 시료 A 1 g에 들어 있는 이산화탄소(CO₂)H의 질량을 알아보기 위한 실험이다.",
+        "passage": "이산화탄소 정량 분석 실험",
+        "choices": [
+          {
+            "number": "①",
+            "text": "2d/5"
+          },
+          {
+            "number": "②",
+            "text": "5d/6"
+          },
+          {
+            "number": "③",
+            "text": "25d/6"
+          },
+          {
+            "number": "④",
+            "text": "5d/12"
+          },
+          {
+            "number": "⑤",
+            "text": "25d/12"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [],
+        "questionType": "quantitative_analysis",
+        "difficulty": "hard",
+        "hasImages": false,
+        "imageCount": 0,
+        "images": [],
+        "imageTypes": [],
+        "hasEssentialImages": false,
+        "imageStatistics": {
+          "totalImages": 0,
+          "imagesByType": {},
+          "totalImageSize": 0
+        }
+      },
+      {
+        "questionNumber": 22,
+        "questionText": "다음은 4가지 산화 환원 반응이다.",
+        "passage": "산화환원 반응의 분류",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [],
+        "questionType": "redox_reaction",
+        "difficulty": "standard",
+        "hasImages": false,
+        "imageCount": 0,
+        "images": [],
+        "imageTypes": [],
+        "hasEssentialImages": false,
+        "imageStatistics": {
+          "totalImages": 0,
+          "imagesByType": {},
+          "totalImageSize": 0
+        }
+      },
+      {
+        "questionNumber": 23,
+        "questionText": "표는 원소 A~D로 구성된 단일한 화합물 (가)~(라)에 대한 자료이다.",
+        "passage": "화합물의 조성과 성질 비교",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄴ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "relatedImages": [
+          {
+            "imageId": "img_q23_table_001",
+            "type": "table",
+            "description": "화합물 조성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 6,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 100
+            }
+          }
+        ],
+        "questionType": "compound_composition",
+        "difficulty": "standard",
+        "hasImages": true,
+        "imageCount": 1,
+        "images": [
+          {
+            "imageId": "img_q23_table_001",
+            "type": "table",
+            "description": "화합물 조성표",
+            "isEssential": true,
+            "coordinates": {
+              "pageNumber": 6,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 100
+            },
+            "questionNumber": 23,
+            "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q23/table_img_q23_table_001_1757325957092.png",
+            "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q23/table_img_q23_table_001_1757325957092.png",
+            "dimensions": {
+              "width": 200,
+              "height": 100,
+              "originalWidth": 200,
+              "originalHeight": 100
+            },
+            "originalCoordinates": {
+              "pageNumber": 6,
+              "x": 70,
+              "y": 180,
+              "width": 200,
+              "height": 100
+            },
+            "contentAnalysis": {},
+            "fileSize": 36259,
+            "uploadedAt": "2025-09-08T10:05:57.280Z",
+            "processingMetadata": {
+              "cropPadding": 0,
+              "qualitySettings": "high",
+              "compressionLevel": 6
+            },
+            "processingStatus": "completed"
+          }
+        ],
+        "imageTypes": [
+          "table"
+        ],
+        "hasEssentialImages": true,
+        "imageStatistics": {
+          "totalImages": 1,
+          "imagesByType": {
+            "table": 1
+          },
+          "totalImageSize": 20000
+        }
+      },
+      {
+        "questionNumber": 24,
+        "questionText": "다음은 옥살산(C₂H₂O₄)과 과망간산칼륨(KMnO₄)의 화학 반응을 나타낸 것이다.",
+        "passage": "산화환원 반응의 화학 반응식",
+        "choices": [
+          {
+            "number": "①",
+            "text": "ㄱ"
+          },
+          {
+            "number": "②",
+            "text": "ㄴ"
+          },
+          {
+            "number": "③",
+            "text": "ㄱ, ㄷ"
+          },
+          {
+            "number": "④",
+            "text": "ㄴ, ㄷ"
+          },
+          {
+            "number": "⑤",
+            "text": "ㄱ, ㄴ, ㄷ"
+          }
+        ],
+        "specialMarkers": {
+          "circledNumbers": [],
+          "specialLetters": []
+        },
+        "relatedImages": [],
+        "questionType": "redox_equation",
+        "difficulty": "standard",
+        "hasImages": false,
+        "imageCount": 0,
+        "images": [],
+        "imageTypes": [],
+        "hasEssentialImages": false,
+        "imageStatistics": {
+          "totalImages": 0,
+          "imagesByType": {},
+          "totalImageSize": 0
+        }
+      }
+    ],
+    "allImages": [
+      {
+        "imageId": "img_q1_crystal_001",
+        "questionNumber": 1,
+        "type": "diagram",
+        "description": "4가지 결정 구조 도식",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/diagram_img_q1_crystal_001_1757325956971.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/diagram_img_q1_crystal_001_1757325956971.png",
+        "dimensions": {
+          "width": 200,
+          "height": 150,
+          "originalWidth": 200,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 1,
+          "x": 70,
+          "y": 180,
+          "width": 200,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 48069,
+        "uploadedAt": "2025-09-08T10:05:57.207Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q1_table_001",
+        "questionNumber": 1,
+        "type": "table",
+        "description": "결정 분류표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/table_img_q1_table_001_1757325956979.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q1/table_img_q1_table_001_1757325956979.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 1,
+          "x": 70,
+          "y": 350,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 33371,
+        "uploadedAt": "2025-09-08T10:05:57.205Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q2_table_001",
+        "questionNumber": 2,
+        "type": "table",
+        "description": "원소별 전자 배치표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q2/table_img_q2_table_001_1757325956986.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q2/table_img_q2_table_001_1757325956986.png",
+        "dimensions": {
+          "width": 250,
+          "height": 100,
+          "originalWidth": 250,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 1,
+          "x": 315,
+          "y": 120,
+          "width": 250,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 30962,
+        "uploadedAt": "2025-09-08T10:05:57.207Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q3_table_001",
+        "questionNumber": 3,
+        "type": "table",
+        "description": "주기율표 일부",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q3/table_img_q3_table_001_1757325956997.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q3/table_img_q3_table_001_1757325956997.png",
+        "dimensions": {
+          "width": 250,
+          "height": 150,
+          "originalWidth": 250,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 1,
+          "x": 315,
+          "y": 280,
+          "width": 250,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 51293,
+        "uploadedAt": "2025-09-08T10:05:57.244Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q4_table_001",
+        "questionNumber": 4,
+        "type": "table",
+        "description": "분자 특성 비교표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q4/table_img_q4_table_001_1757325957002.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q4/table_img_q4_table_001_1757325957002.png",
+        "dimensions": {
+          "width": 200,
+          "height": 80,
+          "originalWidth": 200,
+          "originalHeight": 80
+        },
+        "originalCoordinates": {
+          "pageNumber": 2,
+          "x": 70,
+          "y": 80,
+          "width": 200,
+          "height": 80
+        },
+        "contentAnalysis": {},
+        "fileSize": 24832,
+        "uploadedAt": "2025-09-08T10:05:57.203Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q5_diagram_001",
+        "questionNumber": 5,
+        "type": "diagram",
+        "description": "루이스 구조식 3개",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q5/diagram_img_q5_diagram_001_1757325957009.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q5/diagram_img_q5_diagram_001_1757325957009.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 2,
+          "x": 70,
+          "y": 250,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 27642,
+        "uploadedAt": "2025-09-08T10:05:57.205Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q6_diagram_001",
+        "questionNumber": 6,
+        "type": "diagram",
+        "description": "분자 결합각 도식",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q6/diagram_img_q6_diagram_001_1757325957013.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q6/diagram_img_q6_diagram_001_1757325957013.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 2,
+          "x": 70,
+          "y": 450,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 30538,
+        "uploadedAt": "2025-09-08T10:05:57.236Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q7_diagram_001",
+        "questionNumber": 7,
+        "type": "diagram",
+        "description": "분자 구조 비교",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q7/diagram_img_q7_diagram_001_1757325957020.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q7/diagram_img_q7_diagram_001_1757325957020.png",
+        "dimensions": {
+          "width": 250,
+          "height": 120,
+          "originalWidth": 250,
+          "originalHeight": 120
+        },
+        "originalCoordinates": {
+          "pageNumber": 2,
+          "x": 315,
+          "y": 180,
+          "width": 250,
+          "height": 120
+        },
+        "contentAnalysis": {},
+        "fileSize": 47067,
+        "uploadedAt": "2025-09-08T10:05:57.256Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q8_diagram_001",
+        "questionNumber": 8,
+        "type": "diagram",
+        "description": "이온 분자 구조",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q8/diagram_img_q8_diagram_001_1757325957027.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q8/diagram_img_q8_diagram_001_1757325957027.png",
+        "dimensions": {
+          "width": 250,
+          "height": 100,
+          "originalWidth": 250,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 2,
+          "x": 315,
+          "y": 380,
+          "width": 250,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 36251,
+        "uploadedAt": "2025-09-08T10:05:57.210Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q9_table_001",
+        "questionNumber": 9,
+        "type": "table",
+        "description": "분자별 원자수와 전자수",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q9/table_img_q9_table_001_1757325957031.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q9/table_img_q9_table_001_1757325957031.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 3,
+          "x": 70,
+          "y": 80,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 28659,
+        "uploadedAt": "2025-09-08T10:05:57.204Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q10_table_001",
+        "questionNumber": 10,
+        "type": "table",
+        "description": "액체 물질 특성표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q10/table_img_q10_table_001_1757325957037.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q10/table_img_q10_table_001_1757325957037.png",
+        "dimensions": {
+          "width": 200,
+          "height": 150,
+          "originalWidth": 200,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 3,
+          "x": 70,
+          "y": 280,
+          "width": 200,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 45456,
+        "uploadedAt": "2025-09-08T10:05:57.219Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q11_table_001",
+        "questionNumber": 11,
+        "type": "table",
+        "description": "화합물 특성 비교표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q11/table_img_q11_table_001_1757325957044.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q11/table_img_q11_table_001_1757325957044.png",
+        "dimensions": {
+          "width": 250,
+          "height": 100,
+          "originalWidth": 250,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 3,
+          "x": 315,
+          "y": 80,
+          "width": 250,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 36962,
+        "uploadedAt": "2025-09-08T10:05:57.259Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q12_diagram_001",
+        "questionNumber": 12,
+        "type": "diagram",
+        "description": "물질 분류 도식",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q12/diagram_img_q12_diagram_001_1757325957052.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q12/diagram_img_q12_diagram_001_1757325957052.png",
+        "dimensions": {
+          "width": 250,
+          "height": 150,
+          "originalWidth": 250,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 3,
+          "x": 315,
+          "y": 280,
+          "width": 250,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 39330,
+        "uploadedAt": "2025-09-08T10:05:57.206Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q13_diagram_001",
+        "questionNumber": 13,
+        "type": "diagram",
+        "description": "증발 과정 도식",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q13/diagram_img_q13_diagram_001_1757325957057.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q13/diagram_img_q13_diagram_001_1757325957057.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 4,
+          "x": 70,
+          "y": 80,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 29047,
+        "uploadedAt": "2025-09-08T10:05:57.204Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q14_table_001",
+        "questionNumber": 14,
+        "type": "table",
+        "description": "시간에 따른 설탕 양 변화",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q14/table_img_q14_table_001_1757325957061.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q14/table_img_q14_table_001_1757325957061.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 4,
+          "x": 70,
+          "y": 280,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 30544,
+        "uploadedAt": "2025-09-08T10:05:57.228Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q16_diagram_001",
+        "questionNumber": 16,
+        "type": "diagram",
+        "description": "비커 속 용액",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q16/diagram_img_q16_diagram_001_1757325957067.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q16/diagram_img_q16_diagram_001_1757325957067.png",
+        "dimensions": {
+          "width": 250,
+          "height": 100,
+          "originalWidth": 250,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 4,
+          "x": 315,
+          "y": 280,
+          "width": 250,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 38112,
+        "uploadedAt": "2025-09-08T10:05:57.232Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q18_table_001",
+        "questionNumber": 18,
+        "type": "table",
+        "description": "수용액 특성표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q18/table_img_q18_table_001_1757325957071.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q18/table_img_q18_table_001_1757325957071.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 5,
+          "x": 70,
+          "y": 80,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 29258,
+        "uploadedAt": "2025-09-08T10:05:57.225Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q19_graph_001",
+        "questionNumber": 19,
+        "type": "graph",
+        "description": "이온 수 변화 그래프",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q19/graph_img_q19_graph_001_1757325957078.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q19/graph_img_q19_graph_001_1757325957078.png",
+        "dimensions": {
+          "width": 200,
+          "height": 150,
+          "originalWidth": 200,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 5,
+          "x": 70,
+          "y": 280,
+          "width": 200,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 44240,
+        "uploadedAt": "2025-09-08T10:05:57.222Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q20_table_001",
+        "questionNumber": 20,
+        "type": "table",
+        "description": "혼합 용액 조성표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q20/table_img_q20_table_001_1757325957087.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q20/table_img_q20_table_001_1757325957087.png",
+        "dimensions": {
+          "width": 250,
+          "height": 150,
+          "originalWidth": 250,
+          "originalHeight": 150
+        },
+        "originalCoordinates": {
+          "pageNumber": 5,
+          "x": 315,
+          "y": 80,
+          "width": 250,
+          "height": 150
+        },
+        "contentAnalysis": {},
+        "fileSize": 61536,
+        "uploadedAt": "2025-09-08T10:05:57.279Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      },
+      {
+        "imageId": "img_q23_table_001",
+        "questionNumber": 23,
+        "type": "table",
+        "description": "화합물 조성표",
+        "isEssential": true,
+        "url": "https://https://image.dodolabs.kr/exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q23/table_img_q23_table_001_1757325957092.png",
+        "s3Key": "exam-images/6f9cb084-c85f-4224-8aeb-4f451f274da4/q23/table_img_q23_table_001_1757325957092.png",
+        "dimensions": {
+          "width": 200,
+          "height": 100,
+          "originalWidth": 200,
+          "originalHeight": 100
+        },
+        "originalCoordinates": {
+          "pageNumber": 6,
+          "x": 70,
+          "y": 180,
+          "width": 200,
+          "height": 100
+        },
+        "contentAnalysis": {},
+        "fileSize": 36259,
+        "uploadedAt": "2025-09-08T10:05:57.220Z",
+        "processingMetadata": {
+          "cropPadding": 0,
+          "qualitySettings": "high",
+          "compressionLevel": 6
+        }
+      }
+    ],
+    "analysisQuality": {},
+    "performance": {
+      "totalProcessingTime": 0,
+      "stepsCompleted": 5,
+      "successRate": "100%"
+    },
+    "success": true,
+    "timestamp": "2025-09-08T10:05:57.280Z"
+  },
+  "message": "OK"
+}

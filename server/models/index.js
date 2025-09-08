@@ -28,16 +28,6 @@ const mysql = new Sequelize(config.database.mysql.dbname[1], null, null, {
     },
 });
 
-const dynamoDB = new dynamoose.aws.ddb.DynamoDB({
-    credentials: {
-        accessKeyId: config.aws.accessKey,
-        secretAccessKey: config.aws.secretAccessKey,
-    },
-    region: config.aws.region,
-});
-
-dynamoose.aws.ddb.set(dynamoDB);
-
 mongoose.set({
     debug: process.env.NODE_ENV !== 'production',
     strictQuery: true,

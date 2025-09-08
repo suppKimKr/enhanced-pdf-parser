@@ -1,15 +1,20 @@
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4} = require('uuid');
-const pdfPoppler = require('pdf-poppler');
+const { pdfToPng } = require('pdf-to-png-converter');
 const { createCanvas, loadImage } = require('canvas');
 const {logger} = require("./index");
+const {PutObjectCommand} = require("@aws-sdk/client-s3");
+const { mongodb: __mongodb__ } = require('../models');
+const { S3Client, BedrockClient } = require("./aws");
+const _ = require("lodash");
+const { InvokeModelWithResponseStreamCommand } = require("@aws-sdk/client-bedrock-runtime");
 
 class EnhancedPDFParserWithImages {
     constructor(config) {
         this.config = config;
-        this.s3Client = new S3Client({ region: config.aws.region });
-        this.bedRockClient = config.bedRockClient;
+        this.s3Client = S3Client();
+        this.bedRockClient = BedrockClient();
         this.tempDir = './temp';
 
         if (!fs.existsSync(this.tempDir)) {
@@ -64,8 +69,8 @@ class EnhancedPDFParserWithImages {
                     ...claudeResult.metadata,
                     processingDate: new Date().toISOString(),
                     totalImageCount: uploadedImages.length,
-                    s3Bucket: this.config.aws.s3.bucket,
-                    claudeModelUsed: this.config.aws.bedrock.modelId
+                    s3Bucket: config.aws.s3Image,
+                    claudeModelUsed: config.aws.bedrock.modelId
                 },
                 questions: finalQuestions,
                 allImages: uploadedImages,
@@ -95,7 +100,7 @@ class EnhancedPDFParserWithImages {
 
         } catch (error) {
             logger.error(`❌ Processing failed for ${processingId}:`, error);
-            await this.cleanup(processingId);
+            // await this.cleanup(processingId);
             throw error;
         }
     }
@@ -172,21 +177,25 @@ class EnhancedPDFParserWithImages {
             uploadPromises.push(uploadPromise);
         }
 
-        // 모든 이미지를 병렬로 처리
-        const results = await Promise.allSettled(uploadPromises);
+        try {
+            // 모든 이미지를 병렬로 처리
+            const results = await Promise.allSettled(uploadPromises);
 
-        results.forEach((result, index) => {
-            if (result.status === 'fulfilled') {
-                uploadResults.push(result.value);
-                logger.info(`✅ Image ${index + 1}/${claudeImages.length} processed: ${result.value.imageId}`);
-            } else {
-                logger.error(`❌ Image ${index + 1}/${claudeImages.length} failed:`, result.reason.message);
-                // 개별 이미지 실패는 전체 처리를 중단하지 않음
-            }
-        });
+            results.forEach((result, index) => {
+                if (result.status === 'fulfilled') {
+                    uploadResults.push(result.value);
+                    logger.info(`✅ Image ${index + 1}/${claudeImages.length} processed: ${result.value.imageId}`);
+                } else {
+                    logger.error(`❌ Image ${index + 1}/${claudeImages.length} failed:`, result.reason.message);
+                    // 개별 이미지 실패는 전체 처리를 중단하지 않음
+                }
+            });
 
-        logger.info(`📊 Upload summary: ${uploadResults.length}/${claudeImages.length} images successful`);
-        return uploadResults;
+            logger.info(`📊 Upload summary: ${uploadResults.length}/${claudeImages.length} images successful`);
+            return uploadResults;
+        } catch (e) {
+            throw Error(e);
+        }
     }
 
     /**
@@ -205,7 +214,7 @@ class EnhancedPDFParserWithImages {
 
             // 크롭 영역 계산 (여백 추가로 안전하게)
             const { x, y, width, height } = imageInfo.coordinates;
-            const padding = 15; // 넉넉한 여백
+            const padding = 0; // 넉넉한 여백
 
             const cropX = Math.max(0, x - padding);
             const cropY = Math.max(0, y - padding);
@@ -283,11 +292,10 @@ class EnhancedPDFParserWithImages {
     async uploadToS3(buffer, key, metadata = {}) {
         try {
             const command = new PutObjectCommand({
-                Bucket: this.config.aws.s3.bucket,
+                Bucket: config.aws.s3Image,
                 Key: key,
                 Body: buffer,
                 ContentType: 'image/png',
-                ACL: 'public-read',
                 // 메타데이터 추가
                 Metadata: {
                     'question-number': String(metadata.questionNumber || ''),
@@ -304,7 +312,7 @@ class EnhancedPDFParserWithImages {
 
             await this.s3Client.send(command);
 
-            const url = `https://${this.config.aws.s3.bucket}.s3.${this.config.aws.region}.amazonaws.com/${key}`;
+            const url = `${config.aws.s3ImageUrl}${key}`;
 
             logger.info(`📤 S3 upload successful: ${key}`);
             return { url, key };
@@ -323,16 +331,23 @@ class EnhancedPDFParserWithImages {
 
         try {
             // 병렬 저장으로 성능 향상
-            const [mysqlResult, mongoResult] = await Promise.allSettled([
-                this.saveToMySQL(result),
+            // const [mysqlResult, mongoResult] = await Promise.allSettled([
+            //     // this.saveToMySQL(result),
+            //     this.saveToMongoDB(result)
+            // ]);
+
+            const [mongoResult] = await Promise.allSettled([
+                // this.saveToMySQL(result),
                 this.saveToMongoDB(result)
             ]);
 
             // 결과 검증
+            /*
             if (mysqlResult.status === 'rejected') {
                 logger.error('❌ MySQL 저장 실패:', mysqlResult.reason);
                 throw new Error(`MySQL save failed: ${mysqlResult.reason.message}`);
             }
+            */
 
             if (mongoResult.status === 'rejected') {
                 logger.error('❌ MongoDB 저장 실패:', mongoResult.reason);
@@ -453,16 +468,10 @@ class EnhancedPDFParserWithImages {
      * MongoDB 저장 (전체 문서 구조 보존)
      */
     async saveToMongoDB(result) {
-        const client = new MongoClient(this.config.mongodb.uri);
-
         try {
-            await client.connect();
-            const db = client.db(this.config.mongodb.database);
-            const collection = db.collection('exam_documents');
-
             // MongoDB에는 전체 구조를 JSON으로 보존
             const mongoDocument = {
-                _id: result.processingId,
+                processingId: result.processingId,
                 ...result,
                 // MongoDB 전용 인덱스 필드들
                 searchableText: this.createSearchableText(result),
@@ -470,11 +479,11 @@ class EnhancedPDFParserWithImages {
                 updatedAt: new Date()
             };
 
-            await collection.insertOne(mongoDocument);
+            await __mongodb__.exam.insertOne(mongoDocument);
             logger.info(`✅ MongoDB save completed: ${result.processingId}`);
 
-        } finally {
-            await client.close();
+        } catch(e) {
+            throw Error(e);
         }
     }
 
@@ -531,26 +540,22 @@ class EnhancedPDFParserWithImages {
         fs.mkdirSync(outputDir, { recursive: true });
 
         const options = {
-            format: 'png',
-            out_dir: outputDir,
-            out_prefix: 'page',
-            page: null, // 모든 페이지
-            scale: 2048, // 고해상도 (표와 그림의 선명도 확보)
-            single_file: false
+            outputFolder: outputDir,
+            outputFileMaskFunc: (pageNumber) => `page_${pageNumber}.png`,
+            viewportScale: 1.0,
         };
 
         try {
-            await pdfPoppler.convert(pdfPath, options);
+            const pngPages = await pdfToPng(pdfPath, options);
 
             // 생성된 이미지 파일들 수집
-            const imageFiles = fs.readdirSync(outputDir)
-                .filter(file => file.endsWith('.png'))
-                .sort()
-                .map(file => ({
-                    path: path.join(outputDir, file),
-                    pageNumber: parseInt(file.match(/page-(\d+)/)[1]),
-                    filename: file
-                }));
+            const imageFiles = _.map(pngPages, (file) => {
+                    return {
+                        path: path.join(outputDir, file.name),
+                        pageNumber: file.pageNumber,
+                        filename: file,
+                    }
+                });
 
             return imageFiles;
         } catch (error) {
@@ -580,7 +585,7 @@ class EnhancedPDFParserWithImages {
 
             const payload = {
                 anthropic_version: 'bedrock-2023-05-31',
-                max_tokens: 8000, // 더 긴 응답을 위해 증가
+                max_tokens: 20000, // 더 긴 응답을 위해 증가
                 temperature: 0.1, // 정확성을 위해 낮은 temperature
                 messages: [
                     {
@@ -593,22 +598,28 @@ class EnhancedPDFParserWithImages {
                 ]
             };
 
-            const command = new InvokeModelCommand({
-                modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0', // Claude 4.0 Sonnet
+            const command = new InvokeModelWithResponseStreamCommand({
+                modelId: config.aws.bedrock.modelId,
                 contentType: 'application/json',
                 body: JSON.stringify(payload)
             });
 
             const response = await this.bedRockClient.send(command);
-            const responseBody = JSON.parse(new TextDecoder().decode(response.body));
 
             // JSON 응답 추출 및 파싱
-            const analysisText = responseBody.content[0].text;
-            logger.info('Claude comprehensive analysis response length:', analysisText.length);
+            let completeMessage = '';
+            let chunk;
+            for await (const item of response.body) {
+                chunk = JSON.parse(new TextDecoder().decode(item.chunk.bytes));
+                if ('content_block_delta' === chunk?.type) {
+                    completeMessage += chunk.delta.text;
+                }
+            }
 
             // JSON 블록 추출 (```json으로 감싸진 경우 처리)
-            const jsonMatch = analysisText.match(/```json\s*([\s\S]*?)\s*```/) ||
-                analysisText.match(/\{[\s\S]*\}/);
+            logger.info(`✅ Cluade Response Content: ${completeMessage}`);
+            const jsonMatch = completeMessage.match(/```json\s*([\s\S]*?)\s*```/) ||
+                completeMessage.match(/\{[\s\S]*\}/);
 
             if (jsonMatch) {
                 const jsonText = jsonMatch[1] || jsonMatch[0];
@@ -633,8 +644,8 @@ class EnhancedPDFParserWithImages {
 
         } catch (error) {
             logger.error('Claude comprehensive analysis failed:', error);
-
-            // Fallback: 기본 구조 반환
+            throw error;
+            /* Fallback: 기본 구조 반환
             return {
                 metadata: {
                     documentType: documentType,
@@ -651,6 +662,7 @@ class EnhancedPDFParserWithImages {
                     processingNotes: [`Analysis failed: ${error.message}`]
                 }
             };
+            */
         }
     }
 }

@@ -85,7 +85,7 @@ function wrapHandlers(handlers, method, path) {
 
                 // 성공 로그 기록
                 const logData = {
-                    service: 'vs-score-api-user',
+                    service: 'enhanced-pdf-parser',
                     environment: process.env.NODE_ENV,
                     method,
                     path: req.originalUrl,
