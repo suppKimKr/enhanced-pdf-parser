@@ -29,7 +29,7 @@ AWS Bedrock(Claude)와 이미지 처리 파이프라인을 활용해 PDF에서 �
     - uploadHandler.js: multer 메모리 업로더(파일 타입 필터)
     - routeWrapper.js, asyncHandler.js, errorHandler.js: 라우터 래핑/에러 처리 등
   - constants/index.js: 토큰 키, 이미지 URL prefix, 문서 타입 상수
-- data/, temp/: 작업 중 생성되는 파일 보관(개발 환경)
+- temp/: 작업 중 생성되는 파일 보관(개발 환경)
 
 ## 설치 및 실행
 ### 요구 사항
@@ -156,10 +156,14 @@ const fs = require('fs');
 - (선택) ioredis, mongoose, sequelize, mysql2
 
 ## 참고 사항
-- data/ 디렉터리는 반환 예시 파일이 저장되어 있습니다.
+- data/example.json 파일은 반환된(구조화된) data의 예시 파일입니다.
 - temp/ 디렉터리는 변환/처리 과정 중 임시 파일이 생성될 수 있습니다.
 - Redis/Mongo/MySQL은 선택 사항이며, 프로젝트 확장 시에만 필요합니다.
 - Bedrock 및 S3 권한이 올바르게 설정되어야 실제 업로드/추론이 동작합니다.
+
+## 성능 개선 및 활용시 주의 사항
+- /server/lib/prompts/exam.js 파일의 prompt 수정을 통해 AWS Bedrock(Claude)의 input/output 을 조정하여 커스텀할 수 있습니다.
+- 1.0 버전이므로 사용 환경과 성능 요구치에 맞게 개선이 필요합니다. 
 
 ## 라이선스 / 기여
 - 내부용(Private). 외부 배포 금지.
