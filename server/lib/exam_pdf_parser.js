@@ -352,7 +352,7 @@ class ExamPDFParserWithImages {
                 metadata: JSON.stringify(result.metadata),
                 totalQuestions: result.questions.length,
                 totalImages: result.allImages.length,
-                s3Bucket: config.aws.s3.bucket
+                s3Bucket: config.aws.s3Image,
             }).save();
 
             const documentId = docResult.insertId;
