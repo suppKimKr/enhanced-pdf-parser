@@ -163,7 +163,8 @@ const fs = require('fs');
 
 ## 성능 개선 및 활용시 주의 사항
 - /server/lib/prompts/exam.js 파일의 prompt 수정을 통해 AWS Bedrock(Claude)의 input/output 을 조정하여 커스텀할 수 있습니다.
-- 1.0 버전이므로 사용 환경과 성능 요구치에 맞게 개선이 필요합니다. 
+- 1.0 버전이므로 사용 환경과 성능 요구치에 맞게 개선이 필요합니다.
+- /server/lib > sendToBatch 함수를 활용하여 redis pub/sub을 MQ로, 파싱 및 저장 완료 시 알림 로직을 추가구현하여 사용자 경험을 향상시키길 권장합니다.  
 
 ## 라이선스 / 기여
 - 내부용(Private). 외부 배포 금지.
