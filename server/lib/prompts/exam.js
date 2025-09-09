@@ -1,5 +1,5 @@
 // Claude 4.0 Sonnet에게 보낼 통합 프롬프트
-const createComprehensiveAnalysisPrompt = (documentType = 'auto') => {
+const createComprehensiveAnalysisPrompt = () => {
     return `
 # 문제지 완전 구조화 및 이미지 추출 분석
 
@@ -139,100 +139,6 @@ const createComprehensiveAnalysisPrompt = (documentType = 'auto') => {
 `;
 };
 
-// 사용 예시 함수
-async function analyzeWithClaudeComprehensive(pageImages, documentType = 'auto') {
-    const prompt = createComprehensiveAnalysisPrompt(documentType);
-
-    try {
-        // 이미지 데이터 준비 (base64 인코딩)
-        const imageData = pageImages.map(img => ({
-            type: 'image',
-            source: {
-                type: 'base64',
-                media_type: 'image/png',
-                data: fs.readFileSync(img.path, { encoding: 'base64' })
-            }
-        }));
-
-        const payload = {
-            anthropic_version: 'bedrock-2023-05-31',
-            max_tokens: 8000, // 더 긴 응답을 위해 증가
-            temperature: 0.1, // 정확성을 위해 낮은 temperature
-            messages: [
-                {
-                    role: 'user',
-                    content: [
-                        {
-                            type: 'text',
-                            text: prompt
-                        },
-                        ...imageData
-                    ]
-                }
-            ]
-        };
-
-        const command = new InvokeModelCommand({
-            modelId: 'anthropic.claude-3-5-sonnet-20241022-v2:0', // Claude 4.0 Sonnet
-            contentType: 'application/json',
-            body: JSON.stringify(payload)
-        });
-
-        const response = await this.bedRockClient.send(command);
-        const responseBody = JSON.parse(new TextDecoder().decode(response.body));
-
-        // JSON 응답 추출 및 파싱
-        const analysisText = responseBody.content[0].text;
-        console.log('Claude raw response:', analysisText);
-
-        // JSON 블록 추출 (```json으로 감싸진 경우 처리)
-        const jsonMatch = analysisText.match(/```json\s*([\s\S]*?)\s*```/) ||
-            analysisText.match(/\{[\s\S]*\}/);
-
-        if (jsonMatch) {
-            const jsonText = jsonMatch[1] || jsonMatch[0];
-            const parsedResult = JSON.parse(jsonText);
-
-            // 결과 검증
-            if (!parsedResult.questions || !Array.isArray(parsedResult.questions)) {
-                throw new Error('Invalid response format: questions array missing');
-            }
-
-            if (!parsedResult.allImages || !Array.isArray(parsedResult.allImages)) {
-                console.warn('No images detected in the document');
-                parsedResult.allImages = [];
-            }
-
-            return parsedResult;
-        } else {
-            throw new Error('No valid JSON found in Claude response');
-        }
-
-    } catch (error) {
-        console.error('Claude comprehensive analysis failed:', error);
-        throw error;
-        /*
-        Fallback: 기본 구조 반환
-        return {
-            metadata: {
-                documentType: documentType,
-                hasImages: false,
-                error: error.message
-            },
-            questions: [],
-            allImages: [],
-            analysisQuality: {
-                textExtractionAccuracy: "0%",
-                imageDetectionRate: "0%",
-                coordinateAccuracy: "failed",
-                completenessScore: "0%",
-                processingNotes: [`Analysis failed: ${error.message}`]
-            }
-        };
-        */
-    }
-}
-
 // 응답 검증 함수
 function validateClaudeResponse(response) {
     const errors = [];
@@ -339,7 +245,6 @@ function postProcessClaudeResponse(response) {
 
 module.exports = {
     createComprehensiveAnalysisPrompt,
-    analyzeWithClaudeComprehensive,
     validateClaudeResponse,
     postProcessClaudeResponse
 };

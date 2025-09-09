@@ -1,32 +1,31 @@
 const path = require('path');
+const constants = require('../constants');
 const fs = require('fs');
 const { v4: uuidv4} = require('uuid');
 const { pdfToPng } = require('pdf-to-png-converter');
 const { createCanvas, loadImage } = require('canvas');
 const {logger} = require("./index");
 const {PutObjectCommand} = require("@aws-sdk/client-s3");
-const { mongodb: __mongodb__ } = require('../models');
+const { mongodb: __mongodb__, mysql: __mySql__, sequelize } = require('../models');
 const { S3Client, BedrockClient } = require("./aws");
 const _ = require("lodash");
 const { InvokeModelWithResponseStreamCommand } = require("@aws-sdk/client-bedrock-runtime");
 
-class EnhancedPDFParserWithImages {
-    constructor(config) {
-        this.config = config;
-        this.s3Client = S3Client();
-        this.bedRockClient = BedrockClient();
-        this.tempDir = './temp';
+class ExamPDFParserWithImages {
+    constructor() {
+        this._s3Client = S3Client();
+        this._bedrockClient = BedrockClient();
+        this._tempDir = './temp';
 
-        if (!fs.existsSync(this.tempDir)) {
-            fs.mkdirSync(this.tempDir, { recursive: true });
+        if (!fs.existsSync(this._tempDir)) {
+            fs.mkdirSync(this._tempDir, { recursive: true });
         }
     }
 
     /**
-     * 새로운 통합 워크플로우
      * Claude 4.0이 모든 구조화 + 이미지 좌표를 한번에 처리
      */
-    async processPDFWithImages(pdfBuffer, options = {}) {
+    async processPDFWithImages(pdfBuffer) {
         const processingId = uuidv4();
         logger.info(`🚀 Processing started: ${processingId}`);
 
@@ -37,12 +36,9 @@ class EnhancedPDFParserWithImages {
             logger.info(`✅ Converted ${pageImages.length} pages to images`);
 
             // 2단계: Claude 4.0으로 완전한 구조화 분석
-            // ⭐ 핵심: 텍스트 + 이미지 좌표를 모두 한번에 처리
+            // 텍스트 + 이미지 좌표를 모두 한번에 처리
             logger.info('🤖 Step 2: Claude 4.0 comprehensive analysis...');
-            const claudeResult = await this.analyzeWithClaude(
-                pageImages,
-                options.documentType || 'auto'
-            );
+            const claudeResult = await this.analyzeWithClaude(pageImages);
             logger.info(`✅ Claude analysis completed: ${claudeResult.questions?.length || 0} questions, ${claudeResult.allImages?.length || 0} images`);
 
             // 3단계: Claude가 찾은 이미지들을 실제로 크롭하고 S3에 업로드
@@ -98,16 +94,15 @@ class EnhancedPDFParserWithImages {
 
             return finalResult;
 
-        } catch (error) {
-            logger.error(`❌ Processing failed for ${processingId}:`, error);
-            // await this.cleanup(processingId);
-            throw error;
+        } catch (e) {
+            logger.error(`❌ Processing failed for ${processingId}:`, e);
+            await this.cleanup(processingId);
+            throw e;
         }
     }
 
     /**
      * Claude 4.0에서 받은 문항들과 업로드된 이미지들을 연결
-     * ⭐ 핵심: Claude가 이미 questionNumber로 매핑해놨으므로 단순 연결만
      */
     linkImagesToQuestions(claudeQuestions, uploadedImages) {
         logger.info('🔗 Linking images to questions...');
@@ -153,7 +148,7 @@ class EnhancedPDFParserWithImages {
     }
 
     /**
-     * 이미지를 타입별로 그룹화하는 헬퍼 함수
+     * 이미지를 타입별로 그룹화
      */
     groupImagesByType(images) {
         return images.reduce((acc, img) => {
@@ -163,7 +158,7 @@ class EnhancedPDFParserWithImages {
     }
 
     /**
-     * 개선된 크롭 및 업로드 함수
+     * 이미지 크롭 및 업로드
      */
     async cropAndUploadImages(pageImages, claudeImages, processingId) {
         logger.info(`✂️ Cropping ${claudeImages.length} images...`);
@@ -194,7 +189,7 @@ class EnhancedPDFParserWithImages {
             logger.info(`📊 Upload summary: ${uploadResults.length}/${claudeImages.length} images successful`);
             return uploadResults;
         } catch (e) {
-            throw Error(e);
+            throw e;
         }
     }
 
@@ -243,7 +238,7 @@ class EnhancedPDFParserWithImages {
             // PNG 버퍼 생성 (고품질)
             const croppedBuffer = canvas.toBuffer('image/png', { compressionLevel: 6 });
 
-            // S3 업로드용 키 생성 (구조화된 경로)
+            // S3 업로드용 키 생성
             const timestamp = Date.now();
             const imageKey = `exam-images/${processingId}/q${imageInfo.questionNumber}/${imageInfo.type}_${imageInfo.imageId}_${timestamp}.png`;
 
@@ -280,14 +275,14 @@ class EnhancedPDFParserWithImages {
                 }
             };
 
-        } catch (error) {
-            logger.error(`Failed to process image ${imageInfo.imageId}:`, error);
-            throw error;
+        } catch (e) {
+            logger.error(`Failed to process image ${imageInfo.imageId}:`, e);
+            throw e;
         }
     }
 
     /**
-     * 개선된 S3 업로드 (메타데이터 포함)
+     * S3 업로드 (메타데이터 포함)
      */
     async uploadToS3(buffer, key, metadata = {}) {
         try {
@@ -310,86 +305,55 @@ class EnhancedPDFParserWithImages {
                 ContentEncoding: 'identity'
             });
 
-            await this.s3Client.send(command);
+            await this._s3Client.send(command);
 
-            const url = `${config.aws.s3ImageUrl}${key}`;
+            const url = `${constants.imagePathPrefix.s3}${key}`;
 
             logger.info(`📤 S3 upload successful: ${key}`);
             return { url, key };
 
-        } catch (error) {
-            logger.error(`S3 upload failed for ${key}:`, error);
-            throw new Error(`S3 upload failed: ${error.message}`);
+        } catch (e) {
+            logger.error(`S3 upload failed for ${key}:`, e);
+            throw new Error(`S3 upload failed: ${e.message}`);
         }
     }
 
     /**
-     * 향상된 데이터베이스 저장 (상세 로깅 포함)
+     * 데이터베이스 저장 (상세 로깅 포함)
      */
     async saveToDatabase(result) {
         logger.info('💾 Saving to databases...');
 
         try {
-            // 병렬 저장으로 성능 향상
-            // const [mysqlResult, mongoResult] = await Promise.allSettled([
-            //     // this.saveToMySQL(result),
-            //     this.saveToMongoDB(result)
-            // ]);
-
-            const [mongoResult] = await Promise.allSettled([
-                // this.saveToMySQL(result),
+            // 병렬 저장
+            await Promise.allSettled([
+                this.saveToMySQL(result),
                 this.saveToMongoDB(result)
             ]);
-
-            // 결과 검증
-            /*
-            if (mysqlResult.status === 'rejected') {
-                logger.error('❌ MySQL 저장 실패:', mysqlResult.reason);
-                throw new Error(`MySQL save failed: ${mysqlResult.reason.message}`);
-            }
-            */
-
-            if (mongoResult.status === 'rejected') {
-                logger.error('❌ MongoDB 저장 실패:', mongoResult.reason);
-                // MongoDB 실패는 경고로 처리 (선택사항)
-                console.warn('⚠️ MongoDB save failed, but continuing...');
-            }
 
             logger.info(`✅ Database save completed: ${result.processingId}`);
             logger.info(`📊 Saved: ${result.questions.length} questions, ${result.allImages.length} images`);
 
-        } catch (error) {
-            logger.error('Database save failed:', error);
-            throw error;
+        } catch (e) {
+            logger.error('Database save failed:', e);
+            throw e;
         }
     }
 
     /**
-     * 상세 로깅이 포함된 MySQL 저장
+     * MySQL 저장
      */
     async saveToMySQL(result) {
-        const connection = await mysql.createConnection(this.config.mysql);
-
         try {
-            await connection.beginTransaction();
-            logger.info('📝 Starting MySQL transaction...');
-
             // 1. 문서 정보 저장
-            const [docResult] = await connection.execute(
-                `INSERT INTO exam_documents (
-                    processing_id, document_type, metadata, 
-                    total_questions, total_images, s3_bucket, created_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-                [
-                    result.processingId,
-                    result.documentType,
-                    JSON.stringify(result.metadata),
-                    result.questions.length,
-                    result.allImages.length,
-                    this.config.aws.s3.bucket,
-                    new Date()
-                ]
-            );
+            const docResult = await new __mySql__.examDocument({
+                processingId: result.processingId,
+                documentType: result.documentType,
+                metadata: JSON.stringify(result.metadata),
+                totalQuestions: result.questions.length,
+                totalImages: result.allImages.length,
+                s3Bucket: config.aws.s3.bucket
+            }).save();
 
             const documentId = docResult.insertId;
             logger.info(`📄 Document saved with ID: ${documentId}`);
@@ -399,68 +363,51 @@ class EnhancedPDFParserWithImages {
             let imageCount = 0;
 
             for (const question of result.questions) {
-                const [questionResult] = await connection.execute(
-                    `INSERT INTO exam_questions (
-                        document_id, question_number, question_text, 
-                        passage, choices, additional_info, special_markers,
-                        question_type, difficulty, points, 
-                        has_images, image_count, has_essential_images
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                    [
-                        documentId,
-                        question.questionNumber,
-                        question.questionText,
-                        question.passage || '',
-                        JSON.stringify(question.choices || []),
-                        JSON.stringify(question.additionalInfo || {}),
-                        JSON.stringify(question.specialMarkers || {}),
-                        question.questionType || 'unknown',
-                        question.difficulty || 'standard',
-                        question.points || 2,
-                        question.hasImages || false,
-                        question.imageCount || 0,
-                        question.hasEssentialImages || false
-                    ]
-                );
+                await sequelize.transaction(async (t) => {
+                    const questionResult = await new __mySql__.examQuestion({
+                            fkDocumentId: documentId,
+                            questionNumber: question.questionNumber,
+                            questionText: question.questionText,
+                            passage: question.passage || '',
+                            choices: JSON.stringify(question.choices || []),
+                            additionalInfo: JSON.stringify(question.additionalInfo || {}),
+                            specialMarkers: JSON.stringify(question.specialMarkers || {}),
+                            questionType: question.questionType || 'unknown',
+                            difficulty: question.difficulty || 'standard',
+                            points: question.points || 2,
+                            imageCount: question.imageCount || 0,
+                            hasEssentialImages: question.hasEssentialImages || false,
+                        }
+                    ).save({ transaction: t });
 
-                const questionId = questionResult.insertId;
-                questionCount++;
+                    const questionId = questionResult.id;
+                    questionCount++;
 
-                // 3. 이미지 정보 저장
-                for (const image of question.images || []) {
-                    await connection.execute(
-                        `INSERT INTO exam_images (
-                            question_id, image_id, type, description, 
-                            url, s3_key, dimensions, coordinates, 
-                            is_essential, content_analysis, file_size
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                        [
-                            questionId,
-                            image.imageId,
-                            image.type,
-                            image.description,
-                            image.url,
-                            image.s3Key,
-                            JSON.stringify(image.dimensions),
-                            JSON.stringify(image.originalCoordinates),
-                            image.isEssential || true,
-                            JSON.stringify(image.contentAnalysis || {}),
-                            image.fileSize || 0
-                        ]
-                    );
-                    imageCount++;
-                }
+                    // 3. 이미지 정보 저장
+                    for (const image of question.images || []) {
+                        await new __mySql__.examImage({
+                            fkQuestionId: questionId,
+                            label: image.imageId,
+                            type: image.type,
+                            description: image.description,
+                            s3Key: image.s3Key,
+                            dimensions: JSON.stringify(image.dimensions),
+                            coordinates: JSON.stringify(image.originalCoordinates),
+                            isEssential: image.isEssential || true,
+                            contentAnalysis: JSON.stringify(image.contentAnalysis || {}),
+                        }).save({ transaction: t });
+
+                        imageCount++;
+                    }
+
+                })
             }
 
-            await connection.commit();
             logger.info(`✅ MySQL save completed: ${questionCount} questions, ${imageCount} images`);
 
-        } catch (error) {
-            await connection.rollback();
-            logger.error('❌ MySQL transaction failed, rolling back:', error);
-            throw error;
-        } finally {
-            await connection.end();
+        } catch (e) {
+            logger.error('❌ MySQL transaction failed, rolling back:', e);
+            throw e;
         }
     }
 
@@ -473,7 +420,6 @@ class EnhancedPDFParserWithImages {
             const mongoDocument = {
                 processingId: result.processingId,
                 ...result,
-                // MongoDB 전용 인덱스 필드들
                 searchableText: this.createSearchableText(result),
                 createdAt: new Date(),
                 updatedAt: new Date()
@@ -483,7 +429,8 @@ class EnhancedPDFParserWithImages {
             logger.info(`✅ MongoDB save completed: ${result.processingId}`);
 
         } catch(e) {
-            throw Error(e);
+            logger.error('❌ MongoDB save failed:', e);
+            throw e;
         }
     }
 
@@ -510,11 +457,11 @@ class EnhancedPDFParserWithImages {
         return texts.join(' ').trim();
     }
 
-    // ... 기타 유틸리티 메서드들 (convertPDFToImages, cleanup 등)
+    // 기타 유틸리티 메서드들 (convertPDFToImages, cleanup)
     async cleanup(processingId) {
         try {
-            const processingDir = path.join(this.tempDir, processingId);
-            const pdfPath = path.join(this.tempDir, `${processingId}.pdf`);
+            const processingDir = path.join(this._tempDir, processingId);
+            const pdfPath = path.join(this._tempDir, `${processingId}.pdf`);
 
             // 임시 파일들 삭제
             if (fs.existsSync(processingDir)) {
@@ -526,14 +473,14 @@ class EnhancedPDFParserWithImages {
             }
 
             logger.info(`Cleanup completed for ${processingId}`);
-        } catch (error) {
-            logger.error(`Cleanup failed for ${processingId}:`, error);
+        } catch (e) {
+            logger.error(`Cleanup failed for ${processingId}:`, e);
         }
     }
 
     async convertPDFToImages(pdfBuffer, processingId) {
-        const pdfPath = path.join(this.tempDir, `${processingId}.pdf`);
-        const outputDir = path.join(this.tempDir, processingId);
+        const pdfPath = path.join(this._tempDir, `${processingId}.pdf`);
+        const outputDir = path.join(this._tempDir, processingId);
 
         // PDF 파일 임시 저장
         fs.writeFileSync(pdfPath, pdfBuffer);
@@ -542,7 +489,7 @@ class EnhancedPDFParserWithImages {
         const options = {
             outputFolder: outputDir,
             outputFileMaskFunc: (pageNumber) => `page_${pageNumber}.png`,
-            viewportScale: 1.0,
+            viewportScale: 1.5,
         };
 
         try {
@@ -558,22 +505,22 @@ class EnhancedPDFParserWithImages {
                 });
 
             return imageFiles;
-        } catch (error) {
-            throw new Error(`PDF to image conversion failed: ${error.message}`);
+        } catch (e) {
+            throw new Error(`PDF to image conversion failed: ${e.message}`);
         }
     }
 
-    async analyzeWithClaude(pageImages, documentType = 'auto') {
+    async analyzeWithClaude(pageImages) {
         const {
             createComprehensiveAnalysisPrompt,
             validateClaudeResponse,
             postProcessClaudeResponse
-        } = require('./claude_prompts'); // 위에서 만든 프롬프트 모듈
+        } = require(`./prompts/exam`);
 
-        const analysisPrompt = createComprehensiveAnalysisPrompt(documentType);
+        const analysisPrompt = createComprehensiveAnalysisPrompt();
 
         try {
-            // Claude 4.0 Sonnet에게 완전한 구조화 분석 요청
+            // Claude 4.0 Sonnet에게 png로 변환된 pdf파일의 완전한 구조화 분석 요청
             const imageData = pageImages.map(img => ({
                 type: 'image',
                 source: {
@@ -585,8 +532,8 @@ class EnhancedPDFParserWithImages {
 
             const payload = {
                 anthropic_version: 'bedrock-2023-05-31',
-                max_tokens: 20000, // 더 긴 응답을 위해 증가
-                temperature: 0.1, // 정확성을 위해 낮은 temperature
+                max_tokens: 50000, // 20k - 대략 A4 기준 30페이지 분량. maximum 200k tokens allowed
+                temperature: 0.1,
                 messages: [
                     {
                         role: 'user',
@@ -604,7 +551,7 @@ class EnhancedPDFParserWithImages {
                 body: JSON.stringify(payload)
             });
 
-            const response = await this.bedRockClient.send(command);
+            const response = await this._bedrockClient.send(command);
 
             // JSON 응답 추출 및 파싱
             let completeMessage = '';
@@ -642,9 +589,9 @@ class EnhancedPDFParserWithImages {
                 throw new Error('No valid JSON found in Claude response');
             }
 
-        } catch (error) {
-            logger.error('Claude comprehensive analysis failed:', error);
-            throw error;
+        } catch (e) {
+            logger.error('Claude comprehensive analysis failed:', e);
+            throw e;
             /* Fallback: 기본 구조 반환
             return {
                 metadata: {
@@ -667,4 +614,4 @@ class EnhancedPDFParserWithImages {
     }
 }
 
-module.exports = { EnhancedPDFParserWithImages };
+module.exports = { ExamPDFParserWithImages };

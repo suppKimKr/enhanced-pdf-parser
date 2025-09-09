@@ -26,11 +26,6 @@ module.exports = async (app) => {
 
     // CORS 설정
     app.use(cors());
-    // app.use(
-    //     cors({
-    //         origin: ['http://localhost:8080', 'http://localhost:3333'],
-    //     })
-    // );
 
     app.use(cookieParser());
 
@@ -40,11 +35,11 @@ module.exports = async (app) => {
     app.disable('etag');
     app.disable('x-powered-by');
 
-    /* Sentry
+    /* 추후 APM 용으로 쓸 경우
     if (_.includes(['development', 'production'], process.env.NODE_ENV)) {
         Sentry.init({
-            dsn: 'https://844fc91714844e7ba45cd262790875c9@o4503901272604672.ingest.sentry.io/4504126929305600',
-            integrations: [new Sentry.Integrations.Http({ tracing: true }), new Tracing.Integrations.Express({ app }), new Tracing.Integrations.Mysql()],
+            dsn: 'your-dsn-here',
+            integrations: [new Sentry.Integrations.Http({ tracing: true }), new Tracing.Integrations.Express({ app }), new Tracing.Integrations.Mysql(), new Tracing.Integrations.Mongoose()],
             tracesSampleRate: 0.1,
             environment: process.env.NODE_ENV,
             autoSessionTracking: false,

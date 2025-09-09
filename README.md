@@ -73,8 +73,8 @@ The application is configured using the `config/default.json` file. Key configur
         },
         "redis": {
             "port": 6379,
-            "host": "localhost",
-            "db": 0
+            "host": "your-redis-host",
+            "db": "your-db-number"
         },
         "mongo": {
             "host": "your-mongodb-connection-string",
@@ -106,7 +106,7 @@ The application is configured using the `config/default.json` file. Key configur
 ### Basic Usage
 
 ```javascript
-const { EnhancedPDFParserWithImages } = require('./server/lib/enhanced_pdf_parser');
+const {EnhancedPDFParserWithImages} = require('./exam_pdf_parser');
 const fs = require('fs');
 const config = require('config');
 
@@ -118,12 +118,12 @@ async function processPDF(filePath) {
     try {
         const pdfBuffer = fs.readFileSync(filePath);
         const result = await parser.processPDFWithImages(pdfBuffer, {
-            documentType: 'exam' // or 'auto', 'textbook', etc.
+            documentType: 'exam' // or etc.
         });
-        
+
         logger.info(`Processing completed: ${result.processingId}`);
         logger.info(`Found ${result.questions.length} questions and ${result.allImages.length} images`);
-        
+
         return result;
     } catch (error) {
         logger.error('Error processing PDF:', error);
@@ -150,6 +150,7 @@ The PDF processing workflow consists of several steps:
 The service provides a minimal API with a health check endpoint:
 
 - `GET /health`: Returns the health status of the service
+- `POST /parser/parse`: Parses a PDF document and returns the results
 
 ## Dependencies
 
@@ -157,7 +158,7 @@ Major dependencies include:
 
 - Express: Web server framework
 - AWS SDK: For S3 and Bedrock integration
-- pdf-poppler: For PDF to image conversion
+- pdf-to-png-converter: For PDF to image conversion
 - canvas: For image processing
 - sharp: For image manipulation
 - MongoDB and Mongoose: For NoSQL database integration
